@@ -1,4 +1,4 @@
-package com.example.playlist;
+package com.example.playlist.models;
 
 import javax.persistence.*;
 
@@ -6,33 +6,33 @@ import javax.persistence.*;
 public class Bands {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long band_id;
+  private long id;
   private String bandName;
+  private String genre;
   private String language;
   private String originCountry;
-  private int founded;
-  private String genre;
+  private int founded_year;
   private String story;
 
   public Bands() {
   }
 
-  public Bands(long band_id, String bandName, String language, String originCountry, int founded, String genre, String story) {
-    this.band_id = band_id;
+  public Bands(long id, String bandName, String genre, String language, String originCountry, int founded_year, String story) {
+    this.id = id;
     this.bandName = bandName;
+    this.genre = genre;
     this.language = language;
     this.originCountry = originCountry;
-    this.founded = founded;
-    this.genre = genre;
+    this.founded_year = founded_year;
     this.story = story;
   }
 
   public long getBand_id() {
-    return band_id;
+    return id;
   }
 
-  public void setBand_id(long band_id) {
-    this.band_id = band_id;
+  public void setBand_id(long id) {
+    this.id = id;
   }
 
   public String getBandName() {
@@ -41,6 +41,14 @@ public class Bands {
 
   public void setBandName(String bandName) {
     this.bandName = bandName;
+  }
+
+  public String getGenre() {
+    return genre;
+  }
+
+  public void setGenre(String genre) {
+    this.genre = genre;
   }
 
   public String getLanguage() {
@@ -59,20 +67,12 @@ public class Bands {
     this.originCountry = originCountry;
   }
 
-  public int getFounded() {
-    return founded;
+  public int getFounded_year() {
+    return founded_year;
   }
 
-  public void setFounded(int founded) {
-    this.founded = founded;
-  }
-
-  public String getGenre() {
-    return genre;
-  }
-
-  public void setGenre(String genre) {
-    this.genre = genre;
+  public void setFounded_year(int founded_year) {
+    this.founded_year = founded_year;
   }
 
   public String getStory() {
