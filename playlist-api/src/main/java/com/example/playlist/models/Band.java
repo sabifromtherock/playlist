@@ -3,7 +3,7 @@ package com.example.playlist.models;
 import javax.persistence.*;
 
 @Entity
-public class Bands {
+public class Band {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
@@ -12,19 +12,17 @@ public class Bands {
   private String language;
   private String originCountry;
   private int founded_year;
-  private String story;
 
-  public Bands() {
+  public Band() {
   }
 
-  public Bands(long id, String bandName, String genre, String language, String originCountry, int founded_year, String story) {
+  public Band(long id, String bandName, String genre, String language, String originCountry, int founded_year) {
     this.id = id;
     this.bandName = bandName;
     this.genre = genre;
     this.language = language;
     this.originCountry = originCountry;
     this.founded_year = founded_year;
-    this.story = story;
   }
 
   public long getBand_id() {
@@ -75,11 +73,4 @@ public class Bands {
     this.founded_year = founded_year;
   }
 
-  public String getStory() {
-    return story;
-  }
-
-  public void setStory(String story) {
-    this.story = story;
-  }
 }
