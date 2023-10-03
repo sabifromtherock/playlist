@@ -3,6 +3,7 @@ package com.example.playlist.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "bands")
 public class Band {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,25 +12,12 @@ public class Band {
   private String genre;
   private String language;
   private String originCountry;
-  private int founded_year;
 
-  public Band() {
-  }
-
-  public Band(long id, String bandName, String genre, String language, String originCountry, int founded_year) {
-    this.id = id;
-    this.bandName = bandName;
-    this.genre = genre;
-    this.language = language;
-    this.originCountry = originCountry;
-    this.founded_year = founded_year;
-  }
-
-  public long getBand_id() {
+  public long getId() {
     return id;
   }
 
-  public void setBand_id(long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -65,12 +53,14 @@ public class Band {
     this.originCountry = originCountry;
   }
 
-  public int getFounded_year() {
-    return founded_year;
+  @Override
+  public String toString() {
+    return "Band{" +
+            "id=" + id +
+            ", bandName='" + bandName + '\'' +
+            ", genre='" + genre + '\'' +
+            ", language='" + language + '\'' +
+            ", originCountry='" + originCountry + '\'' +
+            '}';
   }
-
-  public void setFounded_year(int founded_year) {
-    this.founded_year = founded_year;
-  }
-
 }
