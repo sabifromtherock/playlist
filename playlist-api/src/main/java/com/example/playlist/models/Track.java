@@ -3,34 +3,24 @@ package com.example.playlist.models;
 import javax.persistence.*;
 
 @Entity
-public class Tracks {
+@Table(name = "tracks")
+public class Track {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  @ManyToOne
-  @JoinColumn(name = "band_id")
-  private Bands band;
   private String track_title;
   private String youtube_url;
+  @ManyToOne
+  @JoinColumn(name = "band_id")
+  private Band band;
 
-  public Tracks() {
-  }
-
-  public long getTrack_id() {
+  public long getId() {
     return id;
   }
 
-  public void setTrack_id(long id) {
+  public void setId(long id) {
     this.id = id;
-  }
-
-  public Bands getBand() {
-    return band;
-  }
-
-  public void setBand(Bands band) {
-    this.band = band;
   }
 
   public String getTrack_title() {
@@ -47,5 +37,23 @@ public class Tracks {
 
   public void setYoutube_url(String youtube_url) {
     this.youtube_url = youtube_url;
+  }
+
+  public Band getBand() {
+    return band;
+  }
+
+  public void setBand(Band band) {
+    this.band = band;
+  }
+
+  @Override
+  public String toString() {
+    return "Track{" +
+            "id=" + id +
+            ", band=" + band +
+            ", track_title='" + track_title + '\'' +
+            ", youtube_url='" + youtube_url + '\'' +
+            '}';
   }
 }
