@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -52,7 +51,9 @@ public class PlaylistController {
   }
 
   @GetMapping("/tracks")
-  public ResponseEntity<List<Track>> getAllTracks() { return ResponseEntity.status(HttpStatus.OK).body(playlistService.getAllTracks());}
+  public ResponseEntity<List<Track>> getAllTracks() {
+    return ResponseEntity.status(HttpStatus.OK).body(playlistService.getAllTracks());
+  }
 
   @GetMapping("/track/{id}")
   public ResponseEntity<Track> getTrackById(@PathVariable long id) {
@@ -60,7 +61,7 @@ public class PlaylistController {
   }
 
   @GetMapping("/band/{bandId}/tracks")
-  public  ResponseEntity<List<Track>> getTracksByBandId(@PathVariable long bandId) {
+  public ResponseEntity<List<Track>> getTracksByBandId(@PathVariable long bandId) {
     return ResponseEntity.status(HttpStatus.OK).body(playlistService.getTracksByBandId(bandId));
   }
 
