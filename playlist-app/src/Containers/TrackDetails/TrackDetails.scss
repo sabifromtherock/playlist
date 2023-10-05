@@ -1,0 +1,17 @@
+@use "../../styles/variables" as *;
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+
+  &__title {
+    color: $color-white;
+    margin-bottom: 1rem;
+    align-self: center;
+  }
+
+  &__track {
+    align-self: center;
+  }
+}
