@@ -1,0 +1,8 @@
+@use "../../styles/variables" as *;
+
+.home {
+  color: $color-white;
+  text-align: center;
+  padding-top: 10rem;
+  font-size: 4rem;
+}
