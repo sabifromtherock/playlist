@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./TrackList.scss";
 import TrackResponse from "../../types/TrackResponse";
 import Track from "../../Components/Track/Track";
+import Spinner from "../../Components/Spinner/Spinner";
 
 const TrackList = () => {
   const [tracks, setTracks] = useState<TrackResponse[]>([]);
@@ -16,6 +17,8 @@ const TrackList = () => {
   useEffect(() => {
     getTracks();
   }, []);
+
+  if (tracks.length === 0) return <Spinner />;
 
   return (
     <div className="track-list">
