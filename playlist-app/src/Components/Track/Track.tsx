@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import TrackResponse from "../../types/TrackResponse";
 import "./Track.scss";
 
@@ -6,6 +7,22 @@ type TrackProp = {
 };
 
 const Track = ({ track }: TrackProp) => {
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    const response = await fetch(`http://localhost:8080/track/${track.id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      alert(`Track with ID ${track.id} deleted.`);
+    } else {
+      const message = await response.text();
+      alert(message);
+    }
+    navigate("/");
+  };
+
   return (
     <div className="track">
       <h2 className="track__band">{track.band.bandName}</h2>
@@ -22,6 +39,9 @@ const Track = ({ track }: TrackProp) => {
           allowFullScreen
         ></iframe>
       </div>
+      <button className="track__delete-button" onClick={handleDelete}>
+        Delete
+      </button>
     </div>
   );
 };
