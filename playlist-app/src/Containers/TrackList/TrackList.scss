@@ -1,0 +1,12 @@
+@use "../../styles/variables" as *;
+
+.track-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+
+  &__item {
+    margin-bottom: 1rem;
+    align-self: center;
+  }
+}
