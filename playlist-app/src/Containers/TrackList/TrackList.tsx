@@ -28,7 +28,7 @@ const TrackList = () => {
           key={track.id}
           to={`/track/${track.id}`}
         >
-          <Track track={track} />
+          <Track track={track} showButtons={false} />
         </Link>
       ))}
     </div>

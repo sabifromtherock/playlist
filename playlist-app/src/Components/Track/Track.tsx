@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TrackResponse from "../../types/TrackResponse";
 import "./Track.scss";
+import TrackResponse from "../../types/TrackResponse";
+import Form from "../Form/Form";
 
 type TrackProp = {
   track: TrackResponse;
+  showButtons: boolean;
 };
 
-const Track = ({ track }: TrackProp) => {
+const Track = ({ track, showButtons }: TrackProp) => {
   const navigate = useNavigate();
+  const [showForm, setShowForm] = useState<boolean>(false);
 
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:8080/track/${track.id}`, {
@@ -16,11 +20,15 @@ const Track = ({ track }: TrackProp) => {
 
     if (response.ok) {
       alert(`Track with ID ${track.id} deleted.`);
+      navigate("/");
     } else {
       const message = await response.text();
       alert(message);
     }
-    navigate("/");
+  };
+
+  const handleUpdate = () => {
+    setShowForm(true);
   };
 
   return (
@@ -35,13 +43,22 @@ const Track = ({ track }: TrackProp) => {
           height="160"
           src={track.youtube_url}
           title="YouTube video player"
-          // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
       </div>
-      <button className="track__delete-button" onClick={handleDelete}>
-        Delete
-      </button>
+
+      {showButtons && (
+        <div className="track__buttons">
+          <button className="track__update-button" onClick={handleUpdate}>
+            Update
+          </button>
+          <button className="track__delete-button" onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
+      )}
+
+      {showForm && <Form track={track} />}
     </div>
   );
 };
