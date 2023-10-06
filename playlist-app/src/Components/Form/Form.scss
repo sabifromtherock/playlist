@@ -1,0 +1,41 @@
+@use "../../styles/variables" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 0.1rem solid $color-white;
+  border-radius: 0.5rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  &__label {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__input {
+    padding: 0.5rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.3rem;
+  }
+
+  &__button {
+    padding: 0.5rem 2rem;
+    background-color: $color-red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-red;
+    }
+  }
+}
