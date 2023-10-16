@@ -20,7 +20,7 @@ const Track = ({ track, showButtons }: TrackProp) => {
 
     if (response.ok) {
       alert(`Track with ID ${track.id} deleted.`);
-      navigate("/");
+      navigate("/tracks");
     } else {
       const message = await response.text();
       alert(message);
