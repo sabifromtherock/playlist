@@ -28,13 +28,15 @@ public class PlaylistService {
   }
 
   public Track addTrack(Track track) {
-    Band band = bandRepository.findById(track.getBand().getId()).orElseThrow(() -> new NotFoundException("Band Not Found"));
+    Band band = bandRepository.findById(track.getBand().getId()).orElse(null);
 
-    Track newTrack = trackRepository.save(track);
+    if (band == null) {
+      band = addBand(track.getBand());
+    }
 
-    newTrack.setBand(band);
+    track.setBand(band);
 
-    return newTrack;
+    return trackRepository.save(track);
   }
 
   // * READ
