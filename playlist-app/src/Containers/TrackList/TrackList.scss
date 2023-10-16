@@ -2,8 +2,30 @@
 
 .track-list {
   display: flex;
-  flex-direction: column;
+  color: $color-white;
+
+  &__filters {
+    align-items: flex-start;
+    padding: 1.5rem;
+    padding-top: 6rem;
+  }
+
+  &__filter {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+.track-list__items {
+  margin: auto;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
   padding-top: 5rem;
+  text-align: center;
+  color: $color-white;
 
   &__item {
     margin-bottom: 1rem;
