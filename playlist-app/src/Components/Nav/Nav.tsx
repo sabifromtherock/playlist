@@ -10,6 +10,9 @@ const Nav = () => {
       <Link className="nav__item" to="/tracks">
         Playlist
       </Link>
+      <Link className="nav__item" to="/track/add">
+        Add a new video
+      </Link>
     </div>
   );
 };
